@@ -1,10 +1,10 @@
 import cats.effect._
-import skunk._
-import skunk.implicits._
-import skunk.codec.all._
 import natchez.Trace.Implicits.noop
-import two.database.usr.session.DatabaseSession
+import skunk._
+import skunk.codec.all._
+import skunk.implicits._
 import two.database.usr.config._
+import two.database.usr.session.DatabaseSession
 
 object Hello extends IOApp {
 

@@ -1,12 +1,14 @@
 package two.database.usr.session
 
-import cats.effect._
-import skunk.implicits._
-import skunk.codec.all._
-import two.database.usr.config._
 import scala.concurrent.ExecutionContext
-import ExecutionContext.Implicits.global
+
+import cats.effect._
 import natchez.Trace.Implicits.noop
+import skunk.codec.all._
+import skunk.implicits._
+import two.database.usr.config._
+
+import ExecutionContext.Implicits.global
 
 class SessionTest extends munit.FunSuite {
 
