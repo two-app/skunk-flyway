@@ -4,7 +4,7 @@ local_env:
 local_env_down:
 	docker-compose rm --force --stop -v postgres
 
-test: clean_localstack
+test:
 	docker-compose build test
 	docker-compose run --rm test
 
