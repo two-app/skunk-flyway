@@ -1,0 +1,41 @@
+name: PR Test
+
+on:
+  push:
+    branches:
+      - "**"
+      - "*"
+      - "!main"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache SBT
+        uses: actions/cache@v2
+        with:
+          path: | 
+            ~/.ivy2/cache
+            ~/.sbt
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+      - run: make test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker-compose down
+        if: ${{ always() }}
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: scalafmt -list
+        uses: AvaPL/scalafmt-native-formatter@v0.1.0
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: scalafix
+        run: sbt "scalafixAll --check"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

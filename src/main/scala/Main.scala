@@ -1,0 +1,28 @@
+import cats.effect._
+import skunk._
+import skunk.implicits._
+import skunk.codec.all._
+import natchez.Trace.Implicits.noop
+import two.database.usr.session.DatabaseSession
+import two.database.usr.config._
+
+object Hello extends IOApp {
+
+  val session: Resource[IO, Resource[IO, Session[IO]]] = DatabaseSession.pool(
+    DatabaseConfig(skunk =
+      SkunkConfig("localhost", "world", 5432, "jimmy", Some("banana"))
+    )
+  )
+
+  def run(args: List[String]): IO[ExitCode] =
+    session.use { s => doRun(s) }
+
+  def doRun(se: Resource[IO, Session[IO]]) = {
+    se.use { s =>
+      for {
+        d <- s.unique(sql"select current_date".query(date))
+        _ <- IO(println(s"The current date is $d."))
+      } yield ExitCode.Success
+    }
+  }
+}
