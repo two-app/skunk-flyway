@@ -1,6 +1,7 @@
 package two.database.usr.config
 
 import scala.concurrent.duration._
+
 import skunk.Session
 
 class ConfigTest extends munit.FunSuite {

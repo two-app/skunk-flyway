@@ -1,5 +1,5 @@
 ## db-usr
-Postgres database resource `usr.
+Effectful database access via Skunk with Flyway migrations.
 
 ### Usage
 

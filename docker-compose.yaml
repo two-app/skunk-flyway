@@ -3,32 +3,23 @@ services:
   postgres:
     image: postgres:13.3
     container_name: postgres
-    ports:
-      - '5432:5432'
     environment:
       - POSTGRES_PASSWORD=helloworld
     volumes:
       - ./db:/docker-entrypoint-initdb.d/
-
-  env:
-    build: .
-    container_name: skunk-flyway-env
-    depends_on:
-      - postgres
-    volumes:
-      - .:/skunk-flyway:z
-    working_dir: /skunk-flyway
-    command: bash
-    tty: true
+    network_mode: host
 
   test:
     build: .
     container_name: test
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
     depends_on:
       - postgres
     volumes:
+      - /.ivy2:/.ivy2
       - .:/skunk-flyway:z
     working_dir: /skunk-flyway
+    network_mode: host
     # Sources bashrc to run startup scripts to wait for dependencies
-    command: sbt test
-
+    command: test

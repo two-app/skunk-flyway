@@ -39,6 +39,6 @@ ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 
 /** GitHub Maven Packages Deployment + Resolver Configuration */
 ThisBuild / githubOwner := "two-app"
-ThisBuild / githubRepository := "db-usr"
+ThisBuild / githubRepository := "skunk-flyway"
 ThisBuild / resolvers += Resolver.githubPackages("OWNER")
 ThisBuild / githubTokenSource := TokenSource.Environment("GITHUB_TOKEN")
