@@ -76,6 +76,44 @@ object AppResources {
 
 Flyway will automatically be applied as part of the `DatabaseSession.pool` resource effect.
 
+#### 1.e. Update Health Check
+Update the health check to reach out to the database:
+
+```scala
+// health/HealthRoute.scala
+import two.database.session.SkunkHealthDao
+
+class HealthRoute[F[_]: Concurrent: ContextShift: Timer](
+    skunk: Resource[F, SkunkHealthDao[F]]
+) extends Route[F] {
+
+  val getHealth: HttpRoutes[F] = {
+    toRoutes(Endpoints.health) { _ =>
+      skunk.use(_.check).map(Either.right(_))
+    }
+  }
+
+  override val routes: HttpRoutes[F] = getHealth
+}
+```
+#### 1.e.f Update Services
+Follow the `Resource` model to map the session to the `skunk-flyway` data access object:
+```scala
+import skunk.Session
+import two.database.session.SkunkHealthDao
+
+class Services[F[_]: ContextShift: Concurrent: Timer: Trace](
+    config: AppConfig,
+    pool: Resource[F, Session[F]]
+) {
+  val rootRoute: RootRoute[F] = new RootRoute()
+  val healthRoute: HealthRoute[F] = new HealthRoute(
+    pool.map(SkunkHealthDao.fromSession[F])
+  )
+  ...
+}
+```
+
 ### 2. Local Development Infrastructure
 Instructions to configure Docker for local development.
 
@@ -152,3 +190,29 @@ make local_env_down
 
 ### 4. Production Infrastructure
 Remember to create your database in the production cluster!
+
+#### 4.a. Database Environment Variables
+```diff
+# deployment/prod-values.yaml
+image:
+  repository: docker.pkg.github.com/two-app/s-{{name}}/s-{{name}}
+  pullPolicy: IfNotPresent
+  tag: "0.1.8" # {"$imagepolicy": "flux-system:s-tst:tag"}
+  env:
+  - name: SERVER_HOST
+    value: "0.0.0.0"
+  - name: SERVER_PORT
+    value: "8080"
++ - name: DATABASE_HOST
++   value: db-pgdb1a
++ - name: DATABASE_USER
++   valueFrom:
++     secretKeyRef:
++       name: pgdb1a-cred
++       key: username
++ - name: DATABASE_PASSWORD
++   valueFrom:
++     secretKeyRef:
++       name: pgdb1a-cred
++       key: password
+```
