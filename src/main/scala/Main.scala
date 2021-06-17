@@ -3,8 +3,8 @@ import natchez.Trace.Implicits.noop
 import skunk._
 import skunk.codec.all._
 import skunk.implicits._
-import two.database.usr.config._
-import two.database.usr.session.DatabaseSession
+import two.database.config._
+import two.database.session.DatabaseSession
 
 object Hello extends IOApp {
 

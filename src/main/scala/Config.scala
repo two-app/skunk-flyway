@@ -1,4 +1,4 @@
-package two.database.usr.config
+package two.database.config
 
 import scala.concurrent.duration._
 
