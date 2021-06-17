@@ -1,11 +1,11 @@
-package two.database.usr.session
+package two.database.session
 
 import cats.effect._
 import cats.implicits._
 import natchez.Trace
 import org.flywaydb.core.Flyway
 import skunk._
-import two.database.usr.config._
+import two.database.config._
 
 object DatabaseSession {
 

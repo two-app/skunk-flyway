@@ -39,7 +39,7 @@ database {
 Append the database configuration to the service Config loader, using the `skunk-flyway` type:
 ```scala
 // config/Config.scala
-import two.database.usr.config.DatabaseConfig
+import two.database.config.DatabaseConfig
 
 case class AppConfig(
     server: ServerConfig,
@@ -53,7 +53,7 @@ Update the application resources to manage a database pool:
 ```scala
 // config/Resources.scala
 import cats.effect.{Blocker, Concurrent, ContextShift, Resource}
-import two.database.usr.session.DatabaseSession
+import two.database.session.DatabaseSession
 import natchez.Trace.Implicits.noop
 import skunk.Session
 

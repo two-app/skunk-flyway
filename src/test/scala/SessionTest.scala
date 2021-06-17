@@ -1,12 +1,10 @@
-package two.database.usr.session
+package two.database.session
 
 import scala.concurrent.ExecutionContext
 
 import cats.effect._
 import natchez.Trace.Implicits.noop
-import skunk.codec.all._
-import skunk.implicits._
-import two.database.usr.config._
+import two.database.config._
 
 import ExecutionContext.Implicits.global
 
@@ -43,8 +41,8 @@ class SessionTest extends munit.FunSuite {
     } yield {
       pool.use { session =>
         for {
-          n <- session.unique(sql"select 3".query(int4))
-        } yield assertEquals(n, 3)
+          res <- SkunkHealthDao.fromSession[IO](session).check
+        } yield assertEquals(res, ())
       }
     }
 
