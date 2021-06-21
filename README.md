@@ -151,6 +151,7 @@ Update the `test` service to depend on postgres:
     environment:
       - SERVER_PORT=8080
       - GITHUB_TOKEN=${GITHUB_TOKEN}
++     - DATABASE_HOST=postgres
     # ...
 +   depends_on:
 +     - postgres
