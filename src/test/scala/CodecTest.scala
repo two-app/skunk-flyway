@@ -35,10 +35,12 @@ class CodecSuite extends munit.FunSuite {
     _ <- DatabaseSession.migrate[IO](flyway)
   } yield ()
 
-  val insert = sql"INSERT INTO country VALUES ($instant)".command
-  val query = sql"SELECT * FROM country".query(instant)
+  val insert = sql"INSERT INTO world.country VALUES ($instant)".command
+  val query = sql"SELECT * FROM world.country".query(instant)
 
   test("codec for Instant") {
+    cleanMigrate().unsafeRunSync()
+
     val test = for {
       pool <- DatabaseSession.pool[IO](db)
     } yield {
