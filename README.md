@@ -3,7 +3,7 @@ Effectful database access via Skunk with Flyway migrations.
 
 ### Installation
 ```
-"com.two" %% "skunk-flyway" % "0.1.1"
+"com.two" %% "skunk-flyway" % "0.1.2"
 ```
 
 ### Usage with `twogen` Services
