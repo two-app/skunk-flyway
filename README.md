@@ -17,7 +17,7 @@ Effectful database access via Skunk with Flyway migrations.
 #### 1.a. Include in `build.sbt`
 ```
 "com.two" %% "skunk-flyway" % "0.1.0"
-"org.tpolecat" %% "skunk-core" % "0.0.24"
+"org.tpolecat" %% "skunk-core" % "0.0.28"
 ```
 
 #### 1.b. Configure Connection
