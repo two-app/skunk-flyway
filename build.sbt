@@ -1,8 +1,7 @@
 val CatsVersion = "2.6.1"
-val CatsEffectVersion = "2.5.1"
-val SkunkVersion = "0.0.24"
-val NatchezVersion = "0.0.25"
-val MUnitVersion = "0.7.22"
+val CatsEffectVersion = "3.2.1"
+val SkunkVersion = "0.2.0"
+val NatchezVersion = "0.1.5"
 
 ThisBuild / scalaVersion := "2.13.4"
 
@@ -10,6 +9,7 @@ lazy val root = (project in file("."))
   .settings(
     organization := "com.two",
     name := "skunk-flyway",
+    version := "0.2.0-RC1",
     libraryDependencies ++= Seq(
       /* Cats Effect */
       "org.typelevel" %% "cats-core" % CatsVersion,
@@ -22,7 +22,9 @@ lazy val root = (project in file("."))
       "org.flywaydb" % "flyway-core" % "7.3.2",
       "org.postgresql" % "postgresql" % "42.2.20",
       /* Testing */
-      "org.scalameta" %% "munit" % MUnitVersion % Test
+      /* Testing */
+      "org.scalameta" %% "munit" % "0.7.27" % Test,
+      "org.typelevel" %% "munit-cats-effect-3" % "1.0.5" % Test
     ),
     addCompilerPlugin("org.typelevel" % "kind-projector_2.13.4" % "0.11.2"),
     addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),

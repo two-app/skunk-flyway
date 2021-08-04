@@ -1,7 +1,9 @@
 package two.database.session
 
 import cats.effect._
+import cats.effect.std.Console
 import cats.implicits._
+import fs2.io.net.Network
 import natchez.Trace
 import org.flywaydb.core.Flyway
 import skunk._
@@ -15,7 +17,7 @@ object DatabaseSession {
     * can be derived from skunk config if not provided.
     * @return a session pool resource
     */
-  def pool[F[_]: ContextShift: Concurrent: Trace](
+  def pool[F[_]: Concurrent: Trace: Sync: Network: Console](
       config: DatabaseConfig
   ): Resource[F, Resource[F, Session[F]]] = {
     val skunk = config.skunk
@@ -24,7 +26,7 @@ object DatabaseSession {
     for {
       _ <- Resource.eval(migrate(flyway))
       session <-
-        Session.pooled(
+        Session.pooled[F](
           host = skunk.host,
           port = skunk.port,
           database = skunk.database,

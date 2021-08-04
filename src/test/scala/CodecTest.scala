@@ -2,24 +2,14 @@ package skunk.codec.extra
 
 import java.time.Instant
 
-import scala.concurrent.ExecutionContext
-
-import cats.effect.{ContextShift, IO, _}
+import cats.effect.IO
 import natchez.Trace.Implicits.noop
 import skunk.codec.extra.all._
 import skunk.implicits._
 import two.database.config._
 import two.database.session.DatabaseSession
 
-import ExecutionContext.Implicits.global
-
-class CodecSuite extends munit.FunSuite {
-  implicit val CS: ContextShift[IO] =
-    IO.contextShift(global)
-
-  implicit def timer(implicit ec: ExecutionContext): Timer[IO] =
-    IO.timer(ec)
-
+class CodecSuite extends munit.CatsEffectSuite {
   val db = DatabaseConfig(
     skunk = SkunkConfig(
       host = "localhost",

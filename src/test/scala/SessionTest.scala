@@ -1,21 +1,10 @@
 package two.database.session
 
-import scala.concurrent.ExecutionContext
-
 import cats.effect._
 import natchez.Trace.Implicits.noop
 import two.database.config._
 
-import ExecutionContext.Implicits.global
-
-class SessionTest extends munit.FunSuite {
-
-  implicit val CS: ContextShift[IO] =
-    IO.contextShift(global)
-
-  implicit def timer(implicit ec: ExecutionContext): Timer[IO] =
-    IO.timer(ec)
-
+class SessionTest extends munit.CatsEffectSuite {
   val db = DatabaseConfig(
     skunk = SkunkConfig(
       host = "localhost",
