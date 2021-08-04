@@ -52,7 +52,7 @@ Update the application resources to manage a database pool:
 
 ```scala
 // config/Resources.scala
-import cats.effect.{Blocker, Concurrent, ContextShift, Resource}
+import cats.effect.{Blocker, Concurrent, Resource}
 import two.database.session.DatabaseSession
 import natchez.Trace.Implicits.noop
 import skunk.Session
@@ -63,7 +63,7 @@ case class AppResources[F[_]](
 )
 
 object AppResources {
-  def create[F[_]: Concurrent: ContextShift](
+  def create[F[_]: Concurrent](
       blocker: Blocker
   ): Resource[F, AppResources[F]] = {
     for {
@@ -83,7 +83,7 @@ Update the health check to reach out to the database:
 // health/HealthRoute.scala
 import two.database.session.SkunkHealthDao
 
-class HealthRoute[F[_]: Concurrent: ContextShift: Timer](
+class HealthRoute[F[_]: Concurrent: Timer](
     skunk: Resource[F, SkunkHealthDao[F]]
 ) extends Route[F] {
 
@@ -102,7 +102,7 @@ Follow the `Resource` model to map the session to the `skunk-flyway` data access
 import skunk.Session
 import two.database.session.SkunkHealthDao
 
-class Services[F[_]: ContextShift: Concurrent: Timer: Trace](
+class Services[F[_]: Concurrent: Timer: Trace](
     config: AppConfig,
     pool: Resource[F, Session[F]]
 ) {
