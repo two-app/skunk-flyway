@@ -34,7 +34,7 @@ Global / cancelable := false
 testFrameworks += new TestFramework("munit.Framework")
 
 /** Scalafix Configuration */
-ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.5.0"
+ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.6.0"
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 
