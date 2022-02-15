@@ -22,7 +22,7 @@ lazy val root = (project in file("."))
       "org.postgresql" % "postgresql" % "42.2.20",
       /* Testing */
       /* Testing */
-      "org.scalameta" %% "munit" % "0.7.27" % Test,
+      "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.5" % Test
     ),
     addCompilerPlugin("org.typelevel" % "kind-projector_2.13.4" % "0.11.2"),
