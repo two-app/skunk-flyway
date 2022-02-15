@@ -21,8 +21,7 @@ lazy val root = (project in file("."))
       "org.flywaydb" % "flyway-core" % "7.15.0",
       "org.postgresql" % "postgresql" % "42.2.25",
       /* Testing */
-      /* Testing */
-      "org.scalameta" %% "munit" % "0.7.27" % Test,
+      "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
     ),
     addCompilerPlugin("org.typelevel" % "kind-projector_2.13.4" % "0.11.3"),
