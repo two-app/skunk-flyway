@@ -3,7 +3,7 @@ val CatsEffectVersion = "3.2.1"
 val SkunkVersion = "0.2.0"
 val NatchezVersion = "0.1.5"
 
-ThisBuild / scalaVersion := "2.13.4"
+ThisBuild / scalaVersion := "2.13.8"
 
 lazy val root = (project in file("."))
   .settings(
