@@ -24,7 +24,7 @@ lazy val root = (project in file("."))
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
     ),
-    addCompilerPlugin("org.typelevel" % "kind-projector_2.13.4" % "0.11.3"),
+    addCompilerPlugin("org.typelevel" % "kind-projector_2.13.4" % "0.13.2"),
     addCompilerPlugin("com.olegpy" %% "better-monadic-for" % "0.3.1"),
     scalacOptions += "-Ymacro-annotations"
   )
