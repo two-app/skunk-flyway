@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
       /* Natchez Tracing */
       "org.tpolecat" %% "natchez-jaeger" % NatchezVersion,
       /* Flyway */
-      "org.flywaydb" % "flyway-core" % "7.15.0",
+      "org.flywaydb" % "flyway-core" % "8.5.0",
       "org.postgresql" % "postgresql" % "42.3.3",
       /* Testing */
       "org.scalameta" %% "munit" % "0.7.29" % Test,
