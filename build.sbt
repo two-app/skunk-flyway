@@ -1,5 +1,5 @@
 val CatsVersion = "2.7.0"
-val CatsEffectVersion = "3.2.9"
+val CatsEffectVersion = "3.3.5"
 val SkunkVersion = "0.2.2"
 val NatchezVersion = "0.1.6"
 
