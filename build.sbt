@@ -1,22 +1,16 @@
-val CatsVersion = "2.7.0"
-val CatsEffectVersion = "3.3.5"
-val SkunkVersion = "0.2.2"
-val NatchezVersion = "0.1.6"
-
-ThisBuild / scalaVersion := "2.13.4"
-
 lazy val root = (project in file("."))
   .settings(
     organization := "com.two",
     name := "skunk-flyway",
+    scalaVersion := "2.13.4",
     libraryDependencies ++= Seq(
       /* Cats Effect */
-      "org.typelevel" %% "cats-core" % CatsVersion,
-      "org.typelevel" %% "cats-effect" % CatsEffectVersion,
+      "org.typelevel" %% "cats-core" % "2.7.0",
+      "org.typelevel" %% "cats-effect" % "3.3.5",
       /* Skunk Postgres */
-      "org.tpolecat" %% "skunk-core" % SkunkVersion,
+      "org.tpolecat" %% "skunk-core" % "0.3.0",
       /* Natchez Tracing */
-      "org.tpolecat" %% "natchez-jaeger" % NatchezVersion,
+      "org.tpolecat" %% "natchez-jaeger" % "0.1.6",
       /* Flyway */
       "org.flywaydb" % "flyway-core" % "8.5.0",
       "org.postgresql" % "postgresql" % "42.3.3",
