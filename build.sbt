@@ -19,7 +19,7 @@ lazy val root = (project in file("."))
       "org.tpolecat" %% "natchez-jaeger" % NatchezVersion,
       /* Flyway */
       "org.flywaydb" % "flyway-core" % "7.15.0",
-      "org.postgresql" % "postgresql" % "42.2.25",
+      "org.postgresql" % "postgresql" % "42.3.3",
       /* Testing */
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
