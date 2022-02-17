@@ -2,7 +2,7 @@ lazy val root = (project in file("."))
   .settings(
     organization := "com.two",
     name := "skunk-flyway",
-    scalaVersion := "2.13.4",
+    scalaVersion := "2.13.8",
     libraryDependencies ++= Seq(
       /* Cats Effect */
       "org.typelevel" %% "cats-core" % "2.7.0",
