@@ -8,7 +8,7 @@ lazy val root = (project in file("."))
       "org.typelevel" %% "cats-core" % "2.7.0",
       "org.typelevel" %% "cats-effect" % "3.3.6",
       /* Skunk Postgres */
-      "org.tpolecat" %% "skunk-core" % "0.3.0",
+      "org.tpolecat" %% "skunk-core" % "0.3.1",
       /* Natchez Tracing */
       "org.tpolecat" %% "natchez-jaeger" % "0.1.6",
       /* Flyway */
