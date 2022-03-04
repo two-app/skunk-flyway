@@ -13,9 +13,11 @@ object DatabaseSession {
 
   /** Migrates the database before creating and returning a Skunk session pool
     *
-    * @param config the database configuration. The flyway configuration
-    * can be derived from skunk config if not provided.
-    * @return a session pool resource
+    * @param config
+    *   the database configuration. The flyway configuration can be derived from
+    *   skunk config if not provided.
+    * @return
+    *   a session pool resource
     */
   def pool[F[_]: Concurrent: Trace: Sync: Network: Console](
       config: DatabaseConfig
