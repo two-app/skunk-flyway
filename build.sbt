@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       /* Cats Effect */
       "org.typelevel" %% "cats-core" % "2.7.0",
-      "org.typelevel" %% "cats-effect" % "3.3.6",
+      "org.typelevel" %% "cats-effect" % "3.3.7",
       /* Skunk Postgres */
       "org.tpolecat" %% "skunk-core" % "0.3.1",
       /* Natchez Tracing */
