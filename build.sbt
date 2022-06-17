@@ -5,7 +5,7 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.8",
     libraryDependencies ++= Seq(
       /* Cats Effect */
-      "org.typelevel" %% "cats-core" % "2.7.0",
+      "org.typelevel" %% "cats-core" % "2.8.0",
       "org.typelevel" %% "cats-effect" % "3.3.11",
       /* Skunk Postgres */
       "org.tpolecat" %% "skunk-core" % "0.3.1",
