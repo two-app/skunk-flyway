@@ -1,0 +1,16 @@
+pull_request_rules:
+  - name: label scala-steward's PRs
+    conditions:
+      - -title=Update .* to .*$
+    actions:
+      label:
+        add: [chore]
+  - name: merge scala-steward's PRs
+    conditions:
+      - -title=Update .* to .*$
+      - status-success=test
+      - status-success=lint
+      - status-success=fix
+    actions:
+      merge:
+        method: squash
