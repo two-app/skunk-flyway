@@ -14,8 +14,10 @@ jobs:
       - name: Launch Scala Steward
         uses: scala-steward-org/scala-steward-action@v2
         with:
-          github-token: ${{ secrets.TOKEN_WITH_READ_PACKAGES_SCOPE }}
-          author-email: scalasteward@two.date
+          github-token: ${{ secrets.SCALA_STEWARD_TOKEN }}
+          author-email: two@two.date
+          author-name: two-date
           cache-ttl: 0s
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_WITH_READ_PACKAGES_SCOPE  }}
+          GITHUB_TOKEN: ${{ secrets.SCALA_STEWARD_TOKEN  }}
+
