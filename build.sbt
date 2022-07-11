@@ -5,15 +5,15 @@ lazy val root = (project in file("."))
     scalaVersion := "2.13.8",
     libraryDependencies ++= Seq(
       /* Cats Effect */
-      "org.typelevel" %% "cats-core" % "2.7.0",
-      "org.typelevel" %% "cats-effect" % "3.3.11",
+      "org.typelevel" %% "cats-core" % "2.8.0",
+      "org.typelevel" %% "cats-effect" % "3.3.13",
       /* Skunk Postgres */
       "org.tpolecat" %% "skunk-core" % "0.3.1",
       /* Natchez Tracing */
       "org.tpolecat" %% "natchez-jaeger" % "0.1.6",
       /* Flyway */
-      "org.flywaydb" % "flyway-core" % "8.5.13",
-      "org.postgresql" % "postgresql" % "42.3.5",
+      "org.flywaydb" % "flyway-core" % "8.5.10",
+      "org.postgresql" % "postgresql" % "42.3.6",
       /* Testing */
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
